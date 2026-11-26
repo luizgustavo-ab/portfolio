@@ -98,13 +98,16 @@
         <p data-i18n="rm_a1">O back-end é uma API REST em Java 25 com Spring Boot, Spring Data JPA e Spring Security com JWT. O PostgreSQL armazena os dados e o Flyway versiona o esquema. O front-end é uma aplicação React 19 com TypeScript, construída com Vite, TanStack Query e React Router.</p>
         <p data-i18n="rm_a2">Uma rotina horária avalia o que está pendente e recupera o que ficou para trás enquanto o serviço esteve fora do ar; um índice único no banco impede que o mesmo aviso seja criado duas vezes. A entrega é uma etapa separada da criação do aviso, com tentativas registradas. Como a hospedagem gratuita suspende o serviço, um agendador externo também dispara a rotina diária por um endpoint protegido.</p>
         <p data-i18n="rm_a3">O front-end está na Vercel, a API no Render e o banco no Supabase. Testes de integração rodam contra um PostgreSQL real com Testcontainers; o front-end é testado com Vitest e Testing Library. A demonstração pública usa a interface real com dados locais de exemplo e não chama o servidor.</p>
+        <p data-i18n="rm_a4">A persistência usa JPA/Hibernate, com buscas paginadas e consultas otimizadas para mitigar problemas de N+1.</p>
+        <p data-i18n="rm_a5">Há testes automatizados no back-end e no front-end: em uma auditoria local, mais de 4.000 testes foram aprovados, sem falhas registradas nessa execução. Nos testes de autorização, 53 tentativas de acesso indevido entre usuários foram todas bloqueadas.</p>
+        <p data-i18n="rm_a6">A IA generativa e a orquestração de agentes de desenvolvimento apoiaram a implementação, a revisão de código, a depuração e os testes automatizados.</p>
       </div>
     </section>
 
     <section class="case-section">
       <h2 data-i18n="csTech">Tecnologias</h2>
       <div>
-        <p>Java 25, Spring Boot, Spring Security, Spring Data JPA, JWT, PostgreSQL, Flyway, React 19, TypeScript, Vite, TanStack Query, React Router, JUnit, Testcontainers, Vitest, Vercel, Render, Supabase.</p>
+        <p>Java 25, Spring Boot, Spring Security, Spring Data JPA, Hibernate, JWT, PostgreSQL, Flyway, React 19, TypeScript, Vite, TanStack Query, React Router, JUnit, Testcontainers, Vitest, Vercel, Docker, Render, Supabase.</p>
       </div>
     </section>
 
