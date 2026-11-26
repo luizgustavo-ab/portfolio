@@ -1,2 +1,2 @@
 # portfolio
-Portfólio pessoal de Luiz Gustavo Alves Barros, Desenvolvedor Back-End com foco em Python, PHP, Symfony, APIs RESTful, Docker, Kubernetes, Linux e Tecnologia da Informação./Personal portfolio of Luiz Gustavo Alves Barros, a Back-End Developer focused on Python, PHP, Symfony, RESTful APIs, Docker, Kubernetes, Linux and Information Technology.
+Portfólio pessoal de Luiz Gustavo Alves Barros, Desenvolvedor Full-Stack com foco em Java, Spring Boot, React, TypeScript e PHP./Personal portfolio of Luiz Gustavo Alves Barros, a Full-Stack Developer focused on Java, Spring Boot, React, TypeScript and PHP.
