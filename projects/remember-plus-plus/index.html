@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#e9e9e7" />
+  <meta name="description" content="Estudo de caso do Remember++, aplicação full-stack de gestão de prazos e fluxos de trabalho jurídicos." data-i18n-attr="content:rm_metaDescription" />
+  <meta property="og:title" content="Remember++ | Luiz Gustavo Alves Barros" data-i18n-attr="content:rm_metaTitle" />
+  <meta property="og:description" content="Estudo de caso do Remember++, aplicação full-stack de gestão de prazos e fluxos de trabalho jurídicos." data-i18n-attr="content:rm_metaDescription" />
+  <meta property="og:type" content="website" />
+
+  <title data-i18n="rm_metaTitle">Remember++ | Luiz Gustavo Alves Barros</title>
+  <link rel="icon" href="data:," />
+
+  <script>
+    (function () {
+      // Quem chega por um projeto não vê o reveal depois, e volta com este projeto selecionado
+      try {
+        sessionStorage.setItem("portfolioRevealSeen", "1");
+        sessionStorage.setItem("portfolioProject", "remember-plus-plus");
+      } catch (error) {}
+
+      try {
+        if (localStorage.getItem("portfolioLanguage") === "en") {
+          document.documentElement.classList.add("i18n-pending");
+        }
+      } catch (error) {}
+
+      addEventListener("load", function () {
+        document.documentElement.classList.remove("i18n-pending");
+      });
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body class="case">
+  <canvas class="glyphs" id="glyphs" aria-hidden="true"></canvas>
+
+  <header class="case-header">
+    <a class="case-home" href="/">Luiz Gustavo Alves Barros</a>
+    <nav class="views-nav" aria-label="Navegação principal" data-i18n-attr="aria-label:navLabel">
+      <a href="/" data-i18n="navWork">Projetos</a>
+      <a href="/#info" data-i18n="navInfo">Info</a>
+    </nav>
+  </header>
+
+  <main class="case-main">
+    <a class="back-link text-link" href="/" data-i18n="backToWork">Voltar aos projetos</a>
+
+    <h1 class="case-title">Remember++</h1>
+    <p class="case-lead" data-i18n="rm_lead">Aplicação web full-stack que reúne processos, prazos, tarefas, compromissos, clientes e finanças de um escritório de advocacia, e avisa antes de cada vencimento.</p>
+
+    <figure class="case-cover">
+      <div class="frame">
+        <img src="/assets/projects/remember-plus-plus/cover-1920.webp" srcset="/assets/projects/remember-plus-plus/cover-960.webp 960w, /assets/projects/remember-plus-plus/cover-1920.webp 1920w" sizes="(min-width: 1200px) 1100px, 100vw" width="1920" height="1080" alt="Remember++: lista de processos ordenada por prazo, com cores de urgência e calendário do mês" data-i18n-attr="alt:rememberCoverAlt" decoding="async" draggable="false" fetchpriority="high" />
+      </div>
+      <figcaption data-i18n="rm_shotNote">Telas da demonstração pública. Todos os nomes e valores são fictícios.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2 data-i18n="csOverview">Visão geral</h2>
+      <div>
+        <p data-i18n="rm_overview">O Remember++ abre no Meu Dia, uma visão única do que está atrasado, do que vence hoje e do que vem a seguir: tarefas, audiências e reuniões, prazos de processos e lançamentos financeiros. Os processos são ordenados por urgência, com uma escala de cores que esquenta conforme o prazo se aproxima.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csPurpose">Problema e propósito</h2>
+      <div>
+        <p data-i18n="rm_purpose">Um prazo só é útil se alguém for avisado a tempo. A aplicação foi pensada para que o lembrete não dependa de a pessoa lembrar de abri-la: os avisos podem chegar por e-mail e notificação push, e um resumo diário é enviado mesmo sem nada vencendo, de modo que o silêncio indica que algo falhou.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csFeatures">Funcionalidades</h2>
+      <div>
+        <ul class="case-list">
+          <li data-i18n="rm_f1">Meu Dia: itens atrasados, de hoje e próximos em uma única lista, ao lado do calendário.</li>
+          <li data-i18n="rm_f2">Processos ordenados pelo que vence primeiro, com cores de urgência e busca por nome, número, cliente ou tribunal.</li>
+          <li data-i18n="rm_f3">Clientes, tarefas, audiências e reuniões vinculados aos processos.</li>
+          <li data-i18n="rm_f4">Lembretes configuráveis por antecedência e horário, para a conta ou por processo, com aviso mínimo na véspera e no dia.</li>
+          <li data-i18n="rm_f5">Central de notificações, envio por e-mail e Web Push.</li>
+          <li data-i18n="rm_f6">Controle de valores a receber e a pagar, baixas parciais e relatórios. O sistema registra o dinheiro, não o movimenta.</li>
+          <li data-i18n="rm_f7">Contas com verificação de e-mail, redefinição de senha e autenticação em dois fatores.</li>
+          <li data-i18n="rm_f8">Demonstração pública com dados fictícios e tour guiado.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csArchitecture">Arquitetura e implementação</h2>
+      <div>
+        <p data-i18n="rm_a1">O back-end é uma API REST em Java 25 com Spring Boot, Spring Data JPA e Spring Security com JWT. O PostgreSQL armazena os dados e o Flyway versiona o esquema. O front-end é uma aplicação React 19 com TypeScript, construída com Vite, TanStack Query e React Router.</p>
+        <p data-i18n="rm_a2">Uma rotina horária avalia o que está pendente e recupera o que ficou para trás enquanto o serviço esteve fora do ar; um índice único no banco impede que o mesmo aviso seja criado duas vezes. A entrega é uma etapa separada da criação do aviso, com tentativas registradas. Como a hospedagem gratuita suspende o serviço, um agendador externo também dispara a rotina diária por um endpoint protegido.</p>
+        <p data-i18n="rm_a3">O front-end está na Vercel, a API no Render e o banco no Supabase. Testes de integração rodam contra um PostgreSQL real com Testcontainers; o front-end é testado com Vitest e Testing Library. A demonstração pública usa a interface real com dados locais de exemplo e não chama o servidor.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csTech">Tecnologias</h2>
+      <div>
+        <p>Java 25, Spring Boot, Spring Security, Spring Data JPA, JWT, PostgreSQL, Flyway, React 19, TypeScript, Vite, TanStack Query, React Router, JUnit, Testcontainers, Vitest, Vercel, Render, Supabase.</p>
+      </div>
+    </section>
+
+    <section class="case-shots" aria-labelledby="shotsHeading">
+      <h2 id="shotsHeading" data-i18n="csScreens">Mais telas</h2>
+      <figure>
+        <div class="frame">
+          <img src="/assets/projects/remember-plus-plus/meu-dia.webp" width="1920" height="1080" alt="Remember++: tela Meu Dia, com itens atrasados e calendário com os compromissos" data-i18n-attr="alt:rememberDayAlt" loading="lazy" decoding="async" />
+        </div>
+        <figcaption data-i18n="rm_cap1">Meu Dia, a visão diária.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="/assets/projects/remember-plus-plus/financeiro.webp" width="1920" height="1080" alt="Remember++: tela Financeiro, com lançamentos a receber e a pagar" data-i18n-attr="alt:rememberFinanceAlt" loading="lazy" decoding="async" />
+        </div>
+        <figcaption data-i18n="rm_cap2">Lançamentos financeiros.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csLinks">Links</h2>
+      <div>
+        <ul class="case-links">
+          <li><a class="text-link" href="https://meusprazos.vercel.app/entrar" target="_blank" rel="noopener noreferrer"><span data-i18n="liveApp">Abrir aplicação</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="https://meusprazos.vercel.app/demo" target="_blank" rel="noopener noreferrer"><span data-i18n="publicDemo">Demonstração pública</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+        </ul>
+        <p data-i18n="rm_linksNote">A aplicação é pública. O código-fonte é privado.</p>
+      </div>
+    </section>
+
+    <nav class="next-project" aria-label="Próximo projeto" data-i18n-attr="aria-label:nextProject">
+      <a href="/projects/food-review/">
+        <span data-i18n="nextProject">Próximo projeto</span>
+        <strong>Food Review</strong>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="case-footer">
+        <ul class="social" aria-label="Links" data-i18n-attr="aria-label:linksLabel">
+          <li><a class="text-link" href="https://github.com/luizgustavo-ab" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="https://www.linkedin.com/in/lgabarros-dev/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="/assets/Curriculo-Luiz-Gustavo-Alves-Barros.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="cvLink">CV</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+        </ul>
+        <div class="language-switcher" role="group" aria-label="Selecionar idioma" data-i18n-attr="aria-label:languageLabel">
+          <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true" aria-label="PT, Português">PT</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="EN, English">EN</button>
+        </div>
+  </footer>
+
+  <script src="/js/translations.js"></script>
+  <script src="/js/glyphs.js"></script>
+</body>
+</html>

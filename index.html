@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#e9e9e7" />
+  <meta name="description" content="Portfólio de Luiz Gustavo Alves Barros, Desenvolvedor Full-Stack em Brasília: desenvolvimento de software, arquitetura e tecnologias cloud." data-i18n-attr="content:metaDescription" />
+  <meta property="og:title" content="Luiz Gustavo Alves Barros | Desenvolvedor Full-Stack" data-i18n-attr="content:metaTitle" />
+  <meta property="og:description" content="Portfólio de Luiz Gustavo Alves Barros, Desenvolvedor Full-Stack em Brasília: desenvolvimento de software, arquitetura e tecnologias cloud." data-i18n-attr="content:metaDescription" />
+  <meta property="og:type" content="website" />
+
+  <title data-i18n="metaTitle">Luiz Gustavo Alves Barros | Desenvolvedor Full-Stack</title>
+  <link rel="icon" href="data:," />
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var seen = false;
+
+      root.classList.add("js");
+
+      // O reveal roda uma vez por sessão da aba
+      try {
+        seen = sessionStorage.getItem("portfolioRevealSeen") === "1";
+      } catch (error) {
+        seen = document.referrer.indexOf(location.origin + "/") === 0;
+      }
+
+      // Cobre a página até o js/reveal.js montar o canvas; sai sozinha se ele falhar
+      if (!seen && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        root.classList.add("page-reveal-pending");
+        setTimeout(function () {
+          root.classList.remove("page-reveal-pending");
+        }, 4000);
+      }
+
+      try {
+        if (localStorage.getItem("portfolioLanguage") === "en") {
+          root.classList.add("i18n-pending");
+        }
+      } catch (error) {}
+
+      // Se algum script falhar, volta para o layout simples com tudo visível
+      addEventListener("load", function () {
+        root.classList.remove("i18n-pending");
+
+        if (window.portfolioReady) return;
+
+        root.classList.remove("js");
+        document.querySelectorAll("[inert]").forEach(function (element) {
+          element.removeAttribute("inert");
+          element.removeAttribute("aria-hidden");
+        });
+      });
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="home">
+  <canvas class="glyphs" id="glyphs" aria-hidden="true"></canvas>
+
+  <div class="shell">
+    <nav class="views-nav" aria-label="Navegação principal" data-i18n-attr="aria-label:navLabel">
+      <a href="#work" data-view-link="work" aria-current="page" data-i18n="navWork">Projetos</a>
+      <a href="#info" data-view-link="info" data-i18n="navInfo">Info</a>
+    </nav>
+
+    <header class="intro">
+      <h1 class="name"><span>Luiz Gustavo</span> <span>Alves Barros</span></h1>
+      <p class="job" data-i18n="jobTitle">Desenvolvedor Full-Stack</p>
+      <p class="intro-text" data-i18n="intro">Atuando com desenvolvimento de software, arquitetura e tecnologias cloud.</p>
+      <p class="location" data-i18n="location">Brasília, Brasil</p>
+    </header>
+
+    <main class="views">
+      <section class="view view-work is-active" id="work" data-view="work" aria-labelledby="workHeading">
+        <h2 class="sr-only" id="workHeading" data-i18n="workHeading">Projetos</h2>
+
+        <div class="carousel" data-carousel role="region" tabindex="0" aria-describedby="carouselHelp" aria-roledescription="carrossel" aria-label="Projetos em destaque" data-i18n-attr="aria-roledescription:carouselRole;aria-label:carouselLabel">
+          <p class="sr-only" id="carouselHelp" data-i18n="carouselHelp">Use as setas do teclado para trocar de projeto. Em telas sensíveis ao toque, deslize para os lados.</p>
+
+          <article class="slide is-active" data-project="remember-plus-plus" data-name="Remember++" aria-roledescription="projeto" data-i18n-attr="aria-roledescription:slideRole">
+            <a class="frame is-logo" href="projects/remember-plus-plus/" tabindex="-1" draggable="false">
+              <span class="wordmark">Remember<span>++</span></span>
+            </a>
+            <div class="caption">
+              <h3 class="sr-only">Remember++</h3>
+              <p class="slide-count"><span aria-hidden="true">01 / 03</span><span class="sr-only" data-i18n="count1">Projeto 1 de 3</span></p>
+              <p class="slide-desc" data-i18n="rememberDesc">Gestão de prazos e fluxos de trabalho jurídicos.</p>
+              <a class="slide-link text-link" href="projects/remember-plus-plus/" data-focus-role="view" draggable="false"><span data-i18n="viewProject">Ver projeto</span><span class="sr-only">: Remember++</span></a>
+            </div>
+          </article>
+
+          <article class="slide" data-project="food-review" data-name="Food Review" aria-roledescription="projeto" data-i18n-attr="aria-roledescription:slideRole">
+            <a class="frame is-logo" href="projects/food-review/" tabindex="-1" draggable="false">
+              <span class="wordmark has-pin">
+                <!-- Pin com mordida: a marca do aplicativo -->
+                <svg class="wordmark-pin" viewBox="226 144 572 720" aria-hidden="true" focusable="false">
+                  <mask id="pinBite" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+                    <rect width="1024" height="1024" fill="#fff" />
+                    <circle cx="640" cy="180" r="56" />
+                    <circle cx="705" cy="255" r="58" />
+                    <circle cx="775" cy="315" r="56" />
+                    <circle cx="512" cy="428" r="97" />
+                  </mask>
+                  <path fill="currentColor" mask="url(#pinBite)" d="M512 858C450 786 360 682 300 613A280 280 0 1 1 724 613C664 682 574 786 512 858Z" />
+                </svg>
+                Food Review
+              </span>
+            </a>
+            <div class="caption">
+              <h3 class="sr-only">Food Review</h3>
+              <p class="slide-count"><span aria-hidden="true">02 / 03</span><span class="sr-only" data-i18n="count2">Projeto 2 de 3</span></p>
+              <p class="slide-desc" data-i18n="foodDesc">Aplicativo mobile de descoberta e avaliação gastronômica.</p>
+              <a class="slide-link text-link" href="projects/food-review/" data-focus-role="view" draggable="false"><span data-i18n="viewProject">Ver projeto</span><span class="sr-only">: Food Review</span></a>
+            </div>
+          </article>
+
+          <article class="slide" data-project="banking-system" data-name="Banking System" aria-roledescription="projeto" data-i18n-attr="aria-roledescription:slideRole">
+            <a class="frame is-logo" href="projects/banking-system/" tabindex="-1" draggable="false">
+              <span class="wordmark">Banking <span>System</span></span>
+            </a>
+            <div class="caption">
+              <h3 class="sr-only">Banking System</h3>
+              <p class="slide-count"><span aria-hidden="true">03 / 03</span><span class="sr-only" data-i18n="count3">Projeto 3 de 3</span></p>
+              <p class="slide-desc" data-i18n="bankDesc">Operações bancárias e arquitetura de software.</p>
+              <a class="slide-link text-link" href="projects/banking-system/" data-focus-role="view" draggable="false"><span data-i18n="viewProject">Ver projeto</span><span class="sr-only">: Banking System</span></a>
+            </div>
+          </article>
+        </div>
+
+        <p class="sr-only" id="carouselStatus" aria-live="polite"></p>
+      </section>
+
+      <section class="view view-info" id="info" data-view="info" tabindex="0" aria-labelledby="infoHeading">
+        <h2 class="sr-only" id="infoHeading" data-i18n="infoLabel">Informações profissionais</h2>
+
+        <section class="info-section">
+          <h3 data-i18n="bioTitle">Biografia</h3>
+          <div>
+            <p data-i18n="bio1">Sou desenvolvedor e atuo em toda a aplicação, com trajetória profissional em engenharia back-end. Como estagiário de desenvolvimento no TCDF, criei e mantive sistemas institucionais e APIs RESTful em PHP e Python, em ambientes conteinerizados.</p>
+            <p data-i18n="bio2">Meus projetos levam essa base ao desenvolvimento full-stack: Java e Spring Boot com React, um aplicativo React Native com back-end em Node.js e um sistema desktop em JavaFX. Meu interesse está em arquitetura de software, modelagem de dados e na forma como os sistemas são implantados e observados, com estudos em tecnologias cloud no programa IBM Back-End Development.</p>
+            <p data-i18n="bio3">Antes de migrar para software, atuei por mais de oito anos em gestão operacional.</p>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3 data-i18n="experienceTitle">Experiência</h3>
+          <div>
+            <article class="entry">
+              <h4 data-i18n="tcdfRole">Estagiário de Desenvolvimento Back-End</h4>
+              <p class="entry-meta">Tribunal de Contas do Distrito Federal (TCDF)<br /><span data-i18n="tcdfDate">Ago/2025 – Ago/2026</span></p>
+              <ul>
+                <li data-i18n="tcdf1">Desenvolvimento e manutenção de sistemas institucionais com PHP 8.2+, Python, Symfony, Doctrine ORM e API Platform, entregando APIs RESTful para integração entre sistemas internos do órgão.</li>
+                <li data-i18n="tcdf2">Monitoramento de sistemas e infraestrutura em ambiente conteinerizado com Docker, Kubernetes e Nginx.</li>
+                <li data-i18n="tcdf3">Clean code, padrões PSR, orientação a objetos, Git/GitHub com Pull Requests e code review, em ambiente Scrum/Kanban.</li>
+                <li data-i18n="tcdf4">Suporte técnico, documentação e contribuição em interfaces com Vue.js e JavaScript.</li>
+              </ul>
+            </article>
+            <article class="entry">
+              <h4 data-i18n="lotosiaRole">Gerente Operacional</h4>
+              <p class="entry-meta">Lotérica Lotosia<br /><span data-i18n="lotosiaDate">Mar/2017 – Nov/2025</span></p>
+              <p data-i18n="lotosiaText">Gestão de equipe e processos operacionais, com decisões baseadas em dados, planejamento estratégico e melhoria contínua.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3 data-i18n="educationTitle">Formação</h3>
+          <div>
+            <article class="entry">
+              <h4 data-i18n="courseName">Análise e Desenvolvimento de Sistemas</h4>
+              <p class="entry-meta">Universidade Católica de Brasília (UCB)<br /><span data-i18n="educationMeta">Mar/2024 – Jun/2026 · Curso superior concluído</span></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3 data-i18n="techTitle">Tecnologias</h3>
+          <div>
+            <dl class="tech">
+              <dt data-i18n="techBackTitle">Back-end</dt>
+              <dd data-i18n="techBack">Python, Django, Flask, PHP 8.2+, Symfony, Doctrine ORM, API Platform, Guzzle, Java, Spring Boot, Node.js, Express, APIs RESTful, JWT, microsserviços e serverless.</dd>
+              <dt data-i18n="techFrontTitle">Front-end e mobile</dt>
+              <dd data-i18n="techFront">JavaScript, TypeScript, Vue.js, React, React Native e Expo.</dd>
+              <dt data-i18n="techDataTitle">Dados</dt>
+              <dd data-i18n="techData">SQL, PostgreSQL, MySQL, MSSQL, mapeamento objeto-relacional e Power BI.</dd>
+              <dt data-i18n="techInfraTitle">Cloud e infraestrutura</dt>
+              <dd data-i18n="techInfra">Docker, Kubernetes, OpenShift, Nginx, Linux, shell scripting, monitoramento e observabilidade, segurança da informação e DevSecOps.</dd>
+              <dt data-i18n="techPracticeTitle">Práticas</dt>
+              <dd data-i18n="techPractice">Clean code, orientação a objetos, Git/GitHub, Pull Requests, code review, documentação técnica, Scrum e Kanban.</dd>
+              <dt data-i18n="techLangTitle">Idiomas</dt>
+              <dd data-i18n="techLang">Português (nativo) e inglês (fluente).</dd>
+            </dl>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3 data-i18n="certTitle">Certificações</h3>
+          <div>
+            <article class="entry">
+              <h4 lang="en">IBM Back-End Development Professional Certificate</h4>
+              <p class="entry-meta" data-i18n="certKind">Certificado profissional · IBM / Coursera · Abr/2026</p>
+              <p data-i18n="certText">Programa de 11 cursos sobre desenvolvimento back-end, engenharia de software, contêineres, microsserviços, segurança e observabilidade.</p>
+              <p><a class="text-link" href="https://coursera.org/verify/professional-cert/XKS2GT1VQX8X" target="_blank" rel="noopener noreferrer"><span data-i18n="certVerify">Ver credencial</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></p>
+              <h5 data-i18n="certCourses">Cursos que compõem o programa</h5>
+              <ul class="courses" lang="en">
+                <li>Introduction to Software Engineering</li>
+                <li>Getting Started with Git and GitHub</li>
+                <li>Hands-on Introduction to Linux Commands and Shell Scripting</li>
+                <li>Python for Data Science, AI &amp; Development</li>
+                <li>Developing AI Applications with Python and Flask</li>
+                <li>Django Application Development with SQL and Databases</li>
+                <li>Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift</li>
+                <li>Application Development using Microservices and Serverless</li>
+                <li>Application Security for Developers and DevOps Professionals</li>
+                <li>Monitoring and Observability for Development and DevOps</li>
+                <li>Back-end Application Development Capstone Project</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3 data-i18n="contactTitle">Contato</h3>
+          <div>
+            <ul class="contact-list">
+              <li><span><span data-i18n="contactEmail">Email</span></span> <a class="text-link" href="mailto:luizgustavoalvesbarros@gmail.com">luizgustavoalvesbarros@gmail.com</a></li>
+              <li><span>LinkedIn</span> <a class="text-link" href="https://www.linkedin.com/in/lgabarros-dev/" target="_blank" rel="noopener noreferrer">linkedin.com/in/lgabarros-dev<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+              <li><span>GitHub</span> <a class="text-link" href="https://github.com/luizgustavo-ab" target="_blank" rel="noopener noreferrer">github.com/luizgustavo-ab<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+              <li><span>CV</span> <a class="text-link" href="assets/Curriculo-Luiz-Gustavo-Alves-Barros.pdf" download data-i18n="resumeDownload">Baixar currículo (PDF)</a></li>
+            </ul>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="foot">
+        <ul class="social" aria-label="Links" data-i18n-attr="aria-label:linksLabel">
+          <li><a class="text-link" href="https://github.com/luizgustavo-ab" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="https://www.linkedin.com/in/lgabarros-dev/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="assets/Curriculo-Luiz-Gustavo-Alves-Barros.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="cvLink">CV</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+        </ul>
+        <div class="language-switcher" role="group" aria-label="Selecionar idioma" data-i18n-attr="aria-label:languageLabel">
+          <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true" aria-label="PT, Português">PT</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="EN, English">EN</button>
+        </div>
+    </footer>
+  </div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/glyphs.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/reveal.js"></script>
+</body>
+</html>

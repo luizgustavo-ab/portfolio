@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#e9e9e7" />
+  <meta name="description" content="Estudo de caso do Banking System, aplicação bancária desktop em Java, JavaFX e MySQL." data-i18n-attr="content:bank_metaDescription" />
+  <meta property="og:title" content="Banking System | Luiz Gustavo Alves Barros" data-i18n-attr="content:bank_metaTitle" />
+  <meta property="og:description" content="Estudo de caso do Banking System, aplicação bancária desktop em Java, JavaFX e MySQL." data-i18n-attr="content:bank_metaDescription" />
+  <meta property="og:type" content="website" />
+
+  <title data-i18n="bank_metaTitle">Banking System | Luiz Gustavo Alves Barros</title>
+  <link rel="icon" href="data:," />
+
+  <script>
+    (function () {
+      // Quem chega por um projeto não vê o reveal depois, e volta com este projeto selecionado
+      try {
+        sessionStorage.setItem("portfolioRevealSeen", "1");
+        sessionStorage.setItem("portfolioProject", "banking-system");
+      } catch (error) {}
+
+      try {
+        if (localStorage.getItem("portfolioLanguage") === "en") {
+          document.documentElement.classList.add("i18n-pending");
+        }
+      } catch (error) {}
+
+      addEventListener("load", function () {
+        document.documentElement.classList.remove("i18n-pending");
+      });
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body class="case">
+  <canvas class="glyphs" id="glyphs" aria-hidden="true"></canvas>
+
+  <header class="case-header">
+    <a class="case-home" href="/">Luiz Gustavo Alves Barros</a>
+    <nav class="views-nav" aria-label="Navegação principal" data-i18n-attr="aria-label:navLabel">
+      <a href="/" data-i18n="navWork">Projetos</a>
+      <a href="/#info" data-i18n="navInfo">Info</a>
+    </nav>
+  </header>
+
+  <main class="case-main">
+    <a class="back-link text-link" href="/" data-i18n="backToWork">Voltar aos projetos</a>
+
+    <h1 class="case-title">Banking System</h1>
+    <p class="case-lead" data-i18n="bank_lead">Aplicação bancária desktop em Java, com interface JavaFX e banco de dados MySQL. Na interface, o sistema se chama MalvaderBank.</p>
+    <p class="case-status" data-i18n="bank_status">Projeto de estudo, em desenvolvimento.</p>
+
+    <figure class="case-cover">
+      <div class="frame">
+        <img src="/assets/projects/banking-system/cover-1200.webp" srcset="/assets/projects/banking-system/cover-960.webp 960w, /assets/projects/banking-system/cover-1200.webp 1200w" sizes="(min-width: 1200px) 1100px, 100vw" width="1200" height="800" alt="Banking System: tela de acesso do MalvaderBank, com escolha do tipo de conta, conta e senha" data-i18n-attr="alt:bankCoverAlt" decoding="async" draggable="false" fetchpriority="high" />
+      </div>
+      <figcaption data-i18n="bank_shotNote">Telas renderizadas a partir dos arquivos de interface da aplicação, sem banco conectado; os valores exibidos são os padrões da interface.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2 data-i18n="csOverview">Visão geral</h2>
+      <div>
+        <p data-i18n="bank_overview">A aplicação tem dois lados. Clientes consultam saldos, enviam dinheiro, movem valores entre conta corrente e poupança e revisam transações. Administradores cadastram clientes e contas, pesquisam e fazem depósitos.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csPurpose">Problema e propósito</h2>
+      <div>
+        <p data-i18n="bank_purpose">Praticar orientação a objetos, modelagem relacional e a estrutura de uma aplicação desktop em torno das entidades de um banco: clientes, contas e transações.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csFeatures">Funcionalidades</h2>
+      <div>
+        <ul class="case-list">
+          <li data-i18n="bank_f1">Acesso como cliente ou administrador.</li>
+          <li data-i18n="bank_f2">Cadastro de clientes com conta corrente e conta poupança.</li>
+          <li data-i18n="bank_f3">Ferramentas do administrador: cadastro de funcionários, lista e remoção de clientes, busca e depósito em poupança.</li>
+          <li data-i18n="bank_f4">Painel do cliente com saldos, transações recentes, totais de entradas e saídas e envio de dinheiro.</li>
+          <li data-i18n="bank_f5">Transferências entre conta corrente e poupança.</li>
+          <li data-i18n="bank_f6">Histórico de transações e gráfico de crescimento de investimento.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csArchitecture">Arquitetura e implementação</h2>
+      <div>
+        <p data-i18n="bank_a1">O código segue a divisão Model–View–Controller: FXML e CSS descrevem as telas, cada uma tem sua classe controladora, e classes de modelo representam clientes, contas e transações. Uma fábrica de telas carrega as views sob demanda e um modelo compartilhado mantém o estado da sessão.</p>
+        <p data-i18n="bank_a2">A persistência passa por uma classe de acesso ao banco que usa JDBC com prepared statements sobre MySQL, com a conexão configurada por variáveis de ambiente. O Maven gerencia o build.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csTech">Tecnologias</h2>
+      <div>
+        <p>Java, JavaFX, FXML, CSS, JDBC, MySQL, Maven, Ikonli.</p>
+      </div>
+    </section>
+
+    <section class="case-shots" aria-labelledby="shotsHeading">
+      <h2 id="shotsHeading" data-i18n="csScreens">Mais telas</h2>
+      <figure>
+        <div class="frame">
+          <img src="/assets/projects/banking-system/accounts.webp" width="1700" height="1500" alt="Banking System: tela de contas, com conta corrente, conta poupança e transferência entre elas" data-i18n-attr="alt:bankAccountsAlt" loading="lazy" decoding="async" />
+        </div>
+        <figcaption data-i18n="bank_cap1">Contas: corrente e poupança, com transferência entre elas.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="/assets/projects/banking-system/create-client.webp" width="1620" height="1506" alt="Banking System: formulário do administrador para cadastrar um novo cliente" data-i18n-attr="alt:bankClientAlt" loading="lazy" decoding="async" />
+        </div>
+        <figcaption data-i18n="bank_cap2">Administrador: cadastro de cliente.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section">
+      <h2 data-i18n="csLinks">Links</h2>
+      <div>
+        <ul class="case-links">
+          <li><a class="text-link" href="https://github.com/luizgustavo-ab/Java-Banking-System" target="_blank" rel="noopener noreferrer"><span data-i18n="repository">Repositório no GitHub</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="next-project" aria-label="Próximo projeto" data-i18n-attr="aria-label:nextProject">
+      <a href="/projects/remember-plus-plus/">
+        <span data-i18n="nextProject">Próximo projeto</span>
+        <strong>Remember++</strong>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="case-footer">
+        <ul class="social" aria-label="Links" data-i18n-attr="aria-label:linksLabel">
+          <li><a class="text-link" href="https://github.com/luizgustavo-ab" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="https://www.linkedin.com/in/lgabarros-dev/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+          <li><a class="text-link" href="/assets/Curriculo-Luiz-Gustavo-Alves-Barros.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="cvLink">CV</span><span class="sr-only"> <span data-i18n="newTab">(abre em nova aba)</span></span></a></li>
+        </ul>
+        <div class="language-switcher" role="group" aria-label="Selecionar idioma" data-i18n-attr="aria-label:languageLabel">
+          <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true" aria-label="PT, Português">PT</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="EN, English">EN</button>
+        </div>
+  </footer>
+
+  <script src="/js/translations.js"></script>
+  <script src="/js/glyphs.js"></script>
+</body>
+</html>

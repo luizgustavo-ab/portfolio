@@ -1,0 +1,1076 @@
+/* ===============================
+   BASE
+   =============================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+
+  --bg: #e9e9e7;
+  --frame: #dadad7;
+  --text: #0a0a0a;
+  --body: #2b2b2b;
+  --muted: #4f4f4f;
+  --line: rgba(0, 0, 0, 0.18);
+
+  --font: "Chakra Petch", Arial, Helvetica, sans-serif;
+  --mono: "Share Tech Mono", "Courier New", monospace;
+
+  --pad-x: clamp(20px, 5vw, 80px);
+  --pad-y: clamp(20px, 4.5vh, 56px);
+
+  --project-size: 1; /* largura do projeto no desktop (1 = coluna inteira) */
+  --project-ratio: 3.5; /* largura / altura do projeto na página inicial */
+
+  --fade-project: 450ms; /* igual a CAROUSEL_CONFIG.duration */
+  --fade-view: 300ms;
+}
+
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+html.i18n-pending body {
+  visibility: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Link de texto: sublinhado discreto que acende no hover */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+  text-decoration-color: var(--line);
+
+  transition: text-decoration-color 160ms ease;
+}
+
+.text-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ===============================
+   PAGE REVEAL (abertura em camadas)
+   =============================== */
+
+/* Cobertura preta até o canvas existir (classe definida no index.html) */
+html.page-reveal-pending::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: #050505;
+}
+
+.page-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* ===============================
+   FUNDO DE GLYPHS
+   =============================== */
+
+.glyphs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+
+  pointer-events: none;
+}
+
+.shell,
+.case-header,
+.case-main,
+.case-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===============================
+   NAVEGAÇÃO, IDIOMA, LINKS
+   =============================== */
+
+.views-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 32px;
+}
+
+.views-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.6em;
+  text-decoration-color: transparent;
+
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.views-nav a:hover {
+  color: var(--text);
+}
+
+.views-nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+
+.foot,
+.case-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 32px;
+
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+}
+
+.social a {
+  min-width: 32px;
+  text-decoration-color: transparent;
+}
+
+.social a:hover {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+
+.language-switcher {
+  display: flex;
+}
+
+.lang-btn {
+  min-width: 44px;
+  min-height: 44px;
+
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.6em;
+  text-decoration-color: transparent;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+  color: var(--text);
+}
+
+.lang-btn.active {
+  text-decoration-color: currentColor;
+}
+
+/* ===============================
+   INÍCIO: COLUNA ÚNICA (padrão)
+   =============================== */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  max-width: 760px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: max(12px, env(safe-area-inset-top))
+    max(var(--pad-x), env(safe-area-inset-right))
+    max(20px, env(safe-area-inset-bottom))
+    max(var(--pad-x), env(safe-area-inset-left));
+}
+
+.foot {
+  margin-top: auto;
+}
+
+/* Identidade */
+.intro {
+  container-type: inline-size;
+}
+
+.name {
+  font-size: clamp(2.25rem, 11vw, 4.5rem);
+  font-size: clamp(2rem, 13.6cqi, 5.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.name span {
+  display: block;
+  white-space: nowrap;
+}
+
+.job {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.intro-text {
+  max-width: 34ch;
+  margin-top: 10px;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.location {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===============================
+   CARROSSEL
+   =============================== */
+
+.carousel {
+  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
+}
+
+.carousel.is-zoomed {
+  touch-action: auto;
+}
+
+.slide + .slide {
+  margin-top: 48px;
+}
+
+/* Área da imagem: mesma proporção para todos, sem moldura */
+.frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+/* Fundo só quando não há imagem para mostrar */
+.frame.is-placeholder,
+.frame.is-missing {
+  background: var(--frame);
+}
+
+/* Página inicial, fora do celular: faixa larga */
+@media (min-width: 601px) {
+  .carousel .frame {
+    aspect-ratio: var(--project-ratio);
+  }
+}
+
+.frame img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.frame-name {
+  padding: 0 24px;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Duas telas em retrato lado a lado (ex.: aplicativo mobile) */
+.frame.is-pair {
+  flex-direction: row;
+  gap: 5%;
+}
+
+.frame.is-pair img {
+  position: static;
+  width: auto;
+  max-width: 44%;
+  height: 88%;
+}
+
+/* Página inicial: o nome do projeto como logotipo, nas cores de cada projeto */
+.frame.is-logo {
+  container-type: inline-size;
+  background: var(--logo-bg, var(--text));
+  color: var(--logo-fg, var(--bg));
+}
+
+[data-project="remember-plus-plus"] {
+  --logo-bg: #16233a;
+  --logo-fg: #f2f1ec;
+  --logo-accent: #c68a12; /* os "++" */
+}
+
+[data-project="food-review"] {
+  --logo-bg: #0b1412;
+  --logo-fg: #fd5d32;
+}
+
+[data-project="banking-system"] {
+  --logo-bg: #132a13;
+  --logo-fg: #ffffff;
+  --logo-accent: #ecf39e; /* "System" */
+}
+
+.wordmark span {
+  color: var(--logo-accent, inherit);
+}
+
+.wordmark.has-pin {
+  display: flex;
+  align-items: center;
+  gap: 0.28em;
+}
+
+.wordmark-pin {
+  flex: none;
+  width: 1.033em;
+  height: 1.3em;
+}
+
+.wordmark {
+  padding: 0 16px;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: 8.6cqi; /* acompanha a largura do retângulo */
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Com imagem, o nome só aparece se ela falhar */
+.frame:not(.is-placeholder) .frame-name {
+  display: none;
+}
+
+.frame.is-missing .frame-name {
+  display: block;
+}
+
+.frame.is-missing img {
+  visibility: hidden;
+}
+
+.frame-note {
+  margin-top: 12px;
+  padding: 0 24px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 24px;
+  padding-top: 16px;
+}
+
+.slide-count {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.slide-desc {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.slide-link {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Com JavaScript: um projeto por vez, empilhados no mesmo espaço */
+.js .carousel {
+  display: grid;
+}
+
+.js .slide {
+  grid-area: 1 / 1;
+  min-width: 0;
+  margin-top: 0;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.js .slide.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Crossfade: o anterior sai enquanto o novo entra */
+.js.is-ready .slide {
+  transition:
+    opacity calc(var(--fade-project) * 0.65) ease-out,
+    visibility 0s linear calc(var(--fade-project) * 0.65);
+}
+
+.js.is-ready .slide.is-active {
+  transition:
+    opacity calc(var(--fade-project) * 0.75) ease-in
+      calc(var(--fade-project) * 0.25),
+    visibility 0s;
+}
+
+/* ===============================
+   VISÕES
+   =============================== */
+
+.views {
+  min-width: 0;
+}
+
+.view {
+  scroll-margin-top: 16px;
+}
+
+.view + .view {
+  margin-top: 64px;
+}
+
+.js .views {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0 calc(var(--pad-x) * -1);
+  padding: 0 var(--pad-x);
+  overflow: hidden;
+  overflow: clip;
+}
+
+.js .view {
+  grid-area: 1 / 1;
+  min-width: 0;
+  margin-top: 0;
+}
+
+/* A visão oculta não ocupa altura na página */
+.js .view:not(.is-active) {
+  position: absolute;
+  top: 0;
+  left: var(--pad-x);
+  right: var(--pad-x);
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.js.is-ready .view {
+  transition:
+    opacity var(--fade-view) ease,
+    visibility 0s linear var(--fade-view);
+}
+
+.js.is-ready .view.is-active {
+  transition:
+    opacity var(--fade-view) ease,
+    visibility 0s;
+}
+
+/* ===============================
+   INFO
+   =============================== */
+
+.view-info:focus-visible {
+  outline-offset: -2px;
+}
+
+.info-section {
+  display: grid;
+  gap: 16px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+
+.info-section:first-of-type {
+  padding-top: 8px;
+  border-top: 0;
+}
+
+.info-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.info-section p,
+.info-section li,
+.info-section dd {
+  max-width: 68ch;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.info-section p + p {
+  margin-top: 14px;
+}
+
+.entry + .entry {
+  margin-top: 32px;
+}
+
+.entry h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.info-section .entry-meta {
+  margin: 6px 0 12px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.entry ul:not(.courses) li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.entry ul:not(.courses) li::before {
+  content: "";
+  position: absolute;
+  top: 0.8em;
+  left: 0;
+  width: 8px;
+  height: 1px;
+  background: var(--muted);
+}
+
+.entry li + li {
+  margin-top: 8px;
+}
+
+.entry h5 {
+  margin: 20px 0 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.courses li {
+  font-size: 0.92rem;
+}
+
+.info-section .courses li {
+  color: var(--muted);
+}
+
+.tech dt {
+  font-weight: 600;
+}
+
+.tech dd + dt {
+  margin-top: 18px;
+}
+
+.contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.contact-list li > span {
+  min-width: 76px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.contact-list a {
+  overflow-wrap: anywhere;
+}
+
+/* ===============================
+   DESKTOP: VIEWPORT FIXA 35 / 65
+   Em janelas baixas, estreitas ou muito ampliadas, vale a coluna única.
+   =============================== */
+
+@media (min-width: 901px) and (min-height: 560px) {
+  html.js:has(body.home),
+  .js body.home {
+    height: 100%;
+    overflow: hidden;
+    overflow: clip;
+    overscroll-behavior: none;
+  }
+
+  .js .home .shell,
+  .js body.home .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 35fr) minmax(0, 65fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    column-gap: clamp(40px, 6vw, 120px);
+    row-gap: 12px;
+
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .js body.home .intro {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: center;
+  }
+
+  .js body.home .views-nav {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .js body.home .views {
+    grid-column: 2;
+    grid-row: 2 / -1;
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+
+  .js body.home .foot {
+    grid-column: 1;
+    grid-row: 3;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+  }
+
+  .js body.home .view {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .js body.home .view:not(.is-active) {
+    position: static;
+  }
+
+  /* A moldura usa a maior largura que ainda cabe na altura disponível */
+  .js body.home .view-work {
+    --caption-height: 6rem;
+    container-type: size;
+  }
+
+  .js body.home .carousel {
+    height: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+  }
+
+  .js body.home .slide {
+    justify-self: center;
+    width: calc(100% * var(--project-size));
+    width: calc(
+      min(100cqi, (100cqb - var(--caption-height)) * var(--project-ratio)) *
+        var(--project-size)
+    );
+  }
+
+  /* Só o painel Info rola */
+  .js body.home .view-info {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 24px;
+    scrollbar-width: thin;
+    scrollbar-color: #a3a3a0 transparent;
+  }
+
+  .js body.home .view-info {
+    container-type: inline-size;
+  }
+
+  /* Título ao lado do texto só quando o painel é largo o bastante */
+  @container (min-width: 640px) {
+    .info-section {
+      grid-template-columns: 14rem minmax(0, 1fr);
+      column-gap: 32px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  /* Menos respiro para o primeiro projeto caber melhor na tela */
+  .shell {
+    gap: 22px;
+  }
+
+  .job {
+    margin-top: 14px;
+  }
+
+  .location {
+    margin-top: 10px;
+  }
+
+  .case-header .case-home {
+    font-size: 0.95rem;
+  }
+
+  /* Imagem de borda a borda em telas pequenas */
+  .carousel .frame {
+    width: auto;
+    margin: 0 calc(var(--pad-x) * -1);
+  }
+}
+
+/* ===============================
+   PÁGINAS DE PROJETO
+   =============================== */
+
+.case-header,
+.case-main,
+.case-footer {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+}
+
+.case-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding-top: max(var(--pad-y), env(safe-area-inset-top));
+}
+
+.case-header .views-nav {
+  margin-left: auto;
+}
+
+.case-home {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.case-main {
+  padding-top: clamp(32px, 7vh, 80px);
+  padding-bottom: 64px;
+}
+
+.back-link {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.case-title {
+  margin-top: 24px;
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.case-lead {
+  max-width: 40ch;
+  margin-top: 24px;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.case-status {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.case-cover {
+  margin: clamp(32px, 6vh, 64px) 0 clamp(48px, 8vh, 96px);
+}
+
+figcaption {
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.case-section {
+  display: grid;
+  gap: 16px;
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-section h2,
+.case-shots h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.case-section p,
+.case-section li {
+  max-width: 66ch;
+  color: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.case-section p + p,
+.case-section ul + p {
+  margin-top: 18px;
+}
+
+.case-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-list li:first-child {
+  padding-top: 0;
+}
+
+.case-list li:last-child {
+  border-bottom: 0;
+}
+
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 32px;
+}
+
+.case-shots {
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-shots figure {
+  margin-top: 32px;
+}
+
+.next-project {
+  border-top: 1px solid var(--line);
+}
+
+.next-project a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding: 48px 0 16px;
+}
+
+.next-project span {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.next-project strong {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: transparent;
+}
+
+.next-project a:hover strong {
+  text-decoration-color: currentColor;
+}
+
+.case-footer {
+  padding-top: 24px;
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 901px) {
+  .case-section {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: 48px;
+  }
+}
+
+/* Telas grandes: toda a escala tipográfica acompanha */
+@media (min-width: 1600px) and (min-height: 850px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 2400px) and (min-height: 1200px) {
+  html {
+    font-size: 137.5%;
+  }
+}
+
+/* ===============================
+   MOVIMENTO REDUZIDO
+   =============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  .js.is-ready .slide,
+  .js.is-ready .slide.is-active,
+  .js.is-ready .view,
+  .js.is-ready .view.is-active {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
